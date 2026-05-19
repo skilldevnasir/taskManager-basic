@@ -6,7 +6,7 @@ const App = () => {
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
-    const res = await fetch('https://basic-task-manager-dfxk.onrender.com/tasks');
+    const res = await fetch('https://taskmanager-basic.onrender.com/tasks');
     const data = await res.json();
     setTasks(data);
   };
@@ -16,7 +16,7 @@ const App = () => {
   }, []);
 
   const addTask = async (title) => {
-    const res = await fetch('https://basic-task-manager-dfxk.onrender.com/tasks', {
+    const res = await fetch('https://taskmanager-basic.onrender.com/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title }),
@@ -26,12 +26,12 @@ const App = () => {
   };
 
   const deleteTask = async (id) => {
-    await fetch(`https://basic-task-manager-dfxk.onrender.com/tasks/${id}`, { method: 'DELETE' });
+    await fetch(`https://taskmanager-basic.onrender.com/tasks/${id}`, { method: 'DELETE' });
     setTasks(prev => prev.filter(task => task._id !== id));
   };
 
   const completeTask = async (id) => {
-    const res = await fetch(`https://basic-task-manager-dfxk.onrender.com/tasks/${id}`, {
+    const res = await fetch(`https://taskmanager-basic.onrender.com/tasks/${id}`, {
       method: 'PATCH',
     });
     const updated = await res.json();
